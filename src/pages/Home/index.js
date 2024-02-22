@@ -22,7 +22,9 @@ const Page = () => {
       <section className="SliderContainer">
         <Slider />
       </section>
-      <section className="ServicesContainer">
+      {/* <section className="ServicesContainer"> */}
+      {/* Ajout de l'id nos-services à la section suivante */}
+      <section id="nos-services" className="ServicesContainer">
         <h2 className="Title">Nos services</h2>
         <p>Nous organisons des événements sur mesure partout dans le monde</p>
         <div className="ListContainer">
@@ -51,11 +53,15 @@ const Page = () => {
           </ServiceCard>
         </div>
       </section>
-      <section className="EventsContainer">
+      {/* <section className="EventsContainer"> */}
+      {/* Ajout de l'id nos-realisations dans la section suivante */}
+      <section id="nos-realisations" className="EventsContainer">
         <h2 className="Title">Nos réalisations</h2>
         <EventList />
       </section>
-      <section className="PeoplesContainer">
+      {/* <section className="PeoplesContainer"> */}
+      {/* Ajout de l'id notre-equipe dans la section suivante */}
+      <section id="notre-equipe" className="PeoplesContainer">
         <h2 className="Title">Notre équipe</h2>
         <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
         <div className="ListContainer">
