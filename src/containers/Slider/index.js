@@ -8,14 +8,23 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
-    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+  new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
+  
+  // new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+  // Les évènements du slider doivent être classés du plus récent
+  // au plus ancien
+  // Si evtA est plus récent que evtB, -1 indique que evtA sera
+  // rangé avant evtB
+
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
+      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
       5000
     );
   };
+  // L'index du tableau byDateDesc ne peut peut prendre que les valeurs 0, 1 ou 2
+
   useEffect(() => {
     nextCard();
   });
@@ -42,10 +51,10 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  key={`${event.id}`}
+                  key={event.title} // La clé n'existait pas
                   type="radio"
                   name="radio-button"
-                  checked={idx === radioIdx}
+                  checked={index === radioIdx} // idx remplacé par index
                 />
               ))}
             </div>
