@@ -10,7 +10,6 @@ const Slider = () => {
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
   new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
-  
   // new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   // Les évènements du slider doivent être classés du plus récent
   // au plus ancien
@@ -23,7 +22,7 @@ const Slider = () => {
       5000
     );
   };
-  // L'index du tableau byDateDesc ne peut peut prendre que les valeurs 0, 1 ou 2
+  // L'index du tableau byDateDesc ne peut prendre que les valeurs 0, 1 ou 2
 
   useEffect(() => {
     nextCard();
@@ -37,7 +36,7 @@ const Slider = () => {
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
-          >
+            >
             <img src={event.cover} alt="forum" />
             <div className="SlideCard__descriptionContainer">
               <div className="SlideCard__description">
@@ -51,10 +50,11 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  key={event.title} // La clé n'existait pas
+                  key={`${_ + radioIdx}`} // La clé mentionnée n'existait pas
                   type="radio"
                   name="radio-button"
                   checked={index === radioIdx} // idx remplacé par index
+                  readOnly // pour supprimer warning console
                 />
               ))}
             </div>
